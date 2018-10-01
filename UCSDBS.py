@@ -2,6 +2,7 @@ from selenium import webdriver
 import os
 from bs4 import BeautifulSoup
 from time import sleep
+import sys
 import sqlite3
 
 #Create DataBase
@@ -13,8 +14,12 @@ conn.commit()
 previous_class = ""
 try:
     for i in range(57960, 57965):
-        #Use Selenium and BeautifulSopu to scrape HTML
-        browser = webdriver.Chrome(os.getcwd() + "/chromedriver.exe")
+        #Use Selenium and BeautifulSoup to scrape HTML
+        if(sys.platform[:3] == "win"):
+            os_url = os.getcwd() + "\\chromedriver.exe"
+        else:
+            os_url = os.getcwd() + "/chromedriver.exe"
+        browser = os_url
         url = "https://ucsd.verbacompare.com/comparison?id=" + str(i)
         browser.get(url)
         sleep(2)
