@@ -19,7 +19,7 @@ try:
             os_url = os.getcwd() + "\\chromedriver.exe"
         else:
             os_url = os.getcwd() + "/chromedriver.exe"
-        browser = os_url
+        browser = webdriver.Chrome(os_url)
         url = "https://ucsd.verbacompare.com/comparison?id=" + str(i)
         browser.get(url)
         sleep(2)
